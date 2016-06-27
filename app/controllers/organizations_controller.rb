@@ -1,33 +1,33 @@
 class OrganizationsController < ApplicationController
 	def index
 		@organizations = Organization.all
-		erb :'organizations/index'
 	end
 
 	def new
-		erb :'organizations/new'
+		@organization = Organization.new
 	end
 
 	def create
 		@neworganization = Organization.new(organization_params)
 		if @organization.save
-			erb 
+			redirect_to @organization
 		else
-			render json: {error: "Unable to create organization"}
+			redirect_to root_path
 		end
 	end
 
 	def show
-		organization = Organization.find_by(id: params[:id])
+		@organization = Organization.find_by(id: params[:id])
 		causes = Cause.where(causable_id: params[:id], causable_type: 'Organization')
 		events = Event.where(organization_id: params[:id])
-		render json: {organization: organization, causes: causes, events: events}
+		redirect_to organization_path
 	end
 
+	# def edit
+	# end
 
-	# Do we need this?
 	# def update
-	# 	organization = Organization.find_by(id: params[:id])
+	# 	@organization = Organization.find_by(id: params[:id])
 	# end
 
 	private

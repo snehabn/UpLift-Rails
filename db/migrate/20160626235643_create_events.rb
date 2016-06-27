@@ -11,7 +11,7 @@ class CreateEvents < ActiveRecord::Migration
       t.integer :zip, null: false
       t.float :lat
       t.float :lng
-      t.integer :volunteers, null: false
+      t.integer :num_volunteers, null: false
 
       t.timestamps null: false
     end
