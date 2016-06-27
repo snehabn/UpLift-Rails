@@ -3,7 +3,7 @@ class CreateCauses < ActiveRecord::Migration
     create_table :causes do |t|
       t.string :name, null: false
       t.references :causable, polymorphic: true, index: true
-      t.string :causable_type
+      t.string :image_url
 
       t.timestamps null: false
     end

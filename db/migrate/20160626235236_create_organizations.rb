@@ -4,6 +4,7 @@ class CreateOrganizations < ActiveRecord::Migration
       t.string :name
       t.string :email, null: false
       t.integer :zip
+      t.string :phone_number
       t.string :mission_statement
       t.string :website_url
       t.string :password_digest, null: false
