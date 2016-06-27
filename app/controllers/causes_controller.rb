@@ -18,10 +18,16 @@ class CausesController < ApplicationController
   end
 
   def edit
-
+    @cause = Cause.find(params[:id])
   end
 
   def update
+    @cause = Cause.find(params[:id])
+    if @cause.update(cause_params)
+      redirect_to root_path
+    else
+      render 'new'
+    end
   end
 
   def destroy
